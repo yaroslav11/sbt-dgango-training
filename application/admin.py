@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+
+from .models import *
+
+#class AutoQuestion():
+
+
+admin.site.register(Question, admin.ModelAdmin)
