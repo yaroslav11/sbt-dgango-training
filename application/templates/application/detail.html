@@ -2,21 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Questions' Title </title>
+    <title>Datail</title>
 </head>
 <body>
 
-{#<p>{{ question }}</p>#}
-{#<p>{{ question }}</p>#}
-{#<p>{{ question }}</p>#}
-
-
-<h1>{{ question.question_text }}</h1>
-<ul>
+<form action="{% url 'app_urls:vote' question.id %}" method="post">
+{% csrf_token %}
 {% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }}</li>
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
 {% endfor %}
-</ul>
+<input type="submit" value="Vote" />
+</form>
 
 </body>
 </html>

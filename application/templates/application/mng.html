@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MNG</title>
+    <script src = "/static/jquery-3.2.0.min.js"></script>
+    <script src="/static/script.js"></script>
+</head>
+<body>
+
+
+    <table style="width:30%">
+      <tr>
+        <th>ID</th>
+        <th>Question</th>
+        <th>Button</th>
+      </tr>
+
+     {% for question in latest_question_list %}
+
+      <tr>
+        <td>{{ question.id}}</td>
+        <td>{{ question.question_text }}</td>
+{#        <td> <input type="submit" name="choice" id="choice{{question.id}}" value="{{ question.id }}">Button</input> </td>#}
+{#        <td><button onclick="alert({{ question.id}});">Delete</button></td>#}
+        <td><button onclick="my_del({{ question.id}});">Delete</button></td>
+      </tr>
+     {% endfor %}
+
+    </table>
+
+
+</body>
+</html>

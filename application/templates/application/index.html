@@ -2,17 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Index</title>
 </head>
 <body>
 
-{% for question in latest_question_list %}
-    <p>
-        {{ question.question_text}}
-        {{". . . . ."}}
-        {{ question.pub_date}}
-    </p>
-{% endfor %}
+{% if latest_question_list %}
+    <ul>
+    {% for question_item in latest_question_list %}
+{#        <li><a href="/application/{{ question.id }}/">{{ question.question_text }}</a></li>#}
+        <li><a href="{% url 'app_urls:detail' question_item.id %}">{{ question_item.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No questions are available.</p>
+{% endif %}
 
 </body>
 </html>
